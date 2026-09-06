@@ -1,7 +1,5 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
-const contactButton = document.querySelector('#contact-button');
-const contactNote = document.querySelector('#contact-note');
 
 menuToggle.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('open');
@@ -28,8 +26,3 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-contactButton.addEventListener('click', () => {
-  contactNote.textContent = 'Our team will be in touch soon.';
-  contactButton.textContent = 'Message received ✓';
-  contactButton.disabled = true;
-});
