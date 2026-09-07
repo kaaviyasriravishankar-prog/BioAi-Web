@@ -1,204 +1,235 @@
-/* styles.css - Colorful theme, responsive layout, and tab styles.
-   Uses Google Fonts (Poppins for headings, Inter for body).
-   Edit variables at the top to tweak colors.
-*/
+// ai-tutor.js
+// Lightweight in-page NovaBioAI Tutor. Uses local page content for simple "teach unit N" answers,
+// and calls a server endpoint (/api/ask) for free-form questions. Do NOT put API keys in client JS.
 
-/* Theme variables */
-:root{
-  --bg-grad-1: #071021;
-  --bg-grad-2: #0b3a43;
-  --accent-1: #7b61ff;
-  --accent-2: #27d2d2;
-  --highlight: #b7ff2f;
-  --card-bg: rgba(255,255,255,0.04);
-  --glass: rgba(255,255,255,0.03);
-  --muted: rgba(255,255,255,0.85);
-  --text: #ffffff;
-  --surface: rgba(255,255,255,0.03);
-  --glass-strong: rgba(255,255,255,0.07);
-  --success: #34d399;
-}
+(function () {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
-/* Base reset */
-* { box-sizing: border-box; }
-html,body { height: 100%; margin: 0; padding: 0; }
-body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
-  background-attachment: fixed;
-  line-height: 1.5;
-  min-height: 100vh;
-}
+  function init() {
+    // UI elements
+    const aiToggle = document.getElementById('aiToggle');
+    const aiPanel = document.getElementById('aiPanel');
+    const aiClose = document.getElementById('aiClose');
+    const aiLog = document.getElementById('aiLog');
+    const aiInput = document.getElementById('aiInput');
+    const aiSend = document.getElementById('aiSend');
+    const aiChips = document.querySelectorAll('.ai-chip');
+    const aiSpeakToggle = document.getElementById('aiSpeakToggle');
 
-/* Container */
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.25rem;
-}
+    if (!aiToggle || !aiPanel || !aiLog || !aiInput || !aiSend) {
+      console.warn('NovaBioAI Tutor: required UI elements not found.');
+      return;
+    }
 
-/* Skip link */
-.skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-.skip-link:focus { left: 1rem; top: 1rem; width: auto; height: auto; padding: 0.5rem 0.75rem; background: rgba(0,0,0,0.85); color: #fff; border-radius: 6px; z-index:9999; }
+    // Build knowledge base from unit panels (visible content)
+    const units = Array.from(document.querySelectorAll('.unit-panel, .unit')).map(unit => {
+      const id = unit.id || '';
+      const titleEl = unit.querySelector('h2, h3, h4') || { textContent: id };
+      const title = (titleEl.textContent || '').trim();
+      const text = (unit.innerText || '').replace(/\s+/g, ' ').trim();
+      return { id, title, text, node: unit };
+    });
 
-/* Header */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 0.5rem 0;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-.header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    let speechEnabled = false;
+    if (aiSpeakToggle) {
+      aiSpeakToggle.addEventListener('click', () => {
+        speechEnabled = !speechEnabled;
+        aiSpeakToggle.setAttribute('aria-pressed', String(speechEnabled));
+        aiSpeakToggle.style.opacity = speechEnabled ? '1' : '0.6';
+      });
+    }
 
-/* Brand */
-.brand { display:flex; align-items:center; gap:0.6rem; }
-.logo-mark { font-size:1.45rem; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.brand-title { font-family: "Poppins", "Inter", sans-serif; font-weight:700; font-size:1.05rem; }
-.brand-sub { font-size:0.82rem; color: rgba(255,255,255,0.85); }
+    function openPanel() {
+      aiPanel.hidden = false;
+      aiPanel.setAttribute('aria-hidden', 'false');
+      aiToggle.setAttribute('aria-expanded', 'true');
+      aiInput.focus();
+      appendBotMessage("Hello! I'm NovaBioAI Tutor. Ask me about units or any biomedical engineering topic. For medical questions I will provide educational information, not personal medical advice.");
+    }
+    function closePanel() {
+      aiPanel.hidden = true;
+      aiPanel.setAttribute('aria-hidden', 'true');
+      aiToggle.setAttribute('aria-expanded', 'false');
+      aiToggle.focus();
+    }
 
-/* Top tab navigation */
-.top-tabs { display:flex; align-items:center; gap:0.5rem; }
-.tablist { display:flex; gap:0.35rem; align-items:center; }
-.tab {
-  background: transparent;
-  color: var(--muted);
-  border: 0;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight:600;
-  font-family: inherit;
-  transition: transform 140ms ease, background 160ms ease;
-}
-.tab[aria-selected="true"] {
-  color: white;
-  background: linear-gradient(90deg, rgba(123,97,255,0.18), rgba(39,210,210,0.08));
-  box-shadow: 0 6px 20px rgba(11,24,55,0.28);
-  transform: translateY(-2px);
-}
+    aiToggle.addEventListener('click', () => {
+      if (aiPanel.hidden) openPanel(); else closePanel();
+    });
+    if (aiClose) aiClose.addEventListener('click', closePanel);
 
-/* Mobile nav toggle */
-.nav-toggle { display:none; background: transparent; border:0; font-size:1.25rem; color:var(--muted); }
-@media (max-width:920px){
-  .tablist { display:none; }
-  .nav-toggle { display:inline-flex; }
-  .top-tabs.open .tablist { display:flex; position: absolute; right: 1.2rem; top: 64px; flex-direction: column; background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.25)); padding: 0.75rem; border-radius: 12px; z-index: 1200; }
-}
+    aiChips.forEach(chip => chip.addEventListener('click', () => {
+      const q = chip.dataset.q || chip.textContent.trim();
+      appendUserMessage(q);
+      handleQuery(q);
+    }));
 
-/* Panels */
-.panel { padding: 1.6rem 0; }
-.hero { padding: 1rem 0 0; }
-.hero h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight:700;
-  font-size: clamp(2rem, 6vw, 4rem);
-  margin: 0 0 .4rem 0;
-  line-height:1;
-  color: #fff;
-}
-.lead { color: rgba(255,255,255,0.9); font-weight:500; }
+    aiSend.addEventListener('click', () => {
+      const q = aiInput.value.trim();
+      if (!q) return;
+      appendUserMessage(q);
+      aiInput.value = '';
+      handleQuery(q);
+    });
+    aiInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); aiSend.click(); }
+    });
 
-/* Home grid */
-.home-grid { display:grid; gap:1rem; grid-template-columns: repeat(3, 1fr); margin-top: 1rem; }
-.card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  padding: 1rem; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-  transition: transform 160ms ease;
-}
-.card:hover { transform: translateY(-6px); }
+    function appendUserMessage(text) {
+      const el = document.createElement('div');
+      el.className = 'ai-message user';
+      el.textContent = text;
+      aiLog.appendChild(el);
+      aiLog.scrollTop = aiLog.scrollHeight;
+    }
+    function appendBotMessage(text) {
+      const el = document.createElement('div');
+      el.className = 'ai-message bot';
+      el.textContent = text;
+      aiLog.appendChild(el);
+      aiLog.scrollTop = aiLog.scrollHeight;
+      if (speechEnabled && 'speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      }
+    }
 
-/* Course layout */
-.course-shell { display:flex; gap:1rem; align-items:flex-start; }
-.course-nav { width: 220px; background: var(--glass); padding: 0.75rem; border-radius: 12px; }
-.units-title { font-weight:700; margin-bottom:0.5rem; font-family: "Poppins", sans-serif; }
-.units-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem; }
-.unit-tab {
-  background: transparent; border: 0; color: var(--muted); text-align:left; padding:0.6rem; border-radius:8px; cursor: pointer; width: 100%;
-}
-.unit-tab[aria-selected="true"] { background: linear-gradient(90deg, rgba(123,97,255,0.12), rgba(39,210,210,0.06)); color: white; transform: translateY(-2px); }
+    // Query handler: local quick answers then server fallback
+    async function handleQuery(q) {
+      const qLower = (q || '').toLowerCase();
 
-/* Unit panels */
-.unit-panels { flex: 1 1 auto; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: 1rem; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-.unit-panel { padding: 0.4rem 0; }
-.unit-panel h2 { margin: 0 0 .6rem 0; font-family: "Poppins", sans-serif; }
+      // Quick local match for "teach me unit N" or "unit N"
+      const unitMatch = qLower.match(/unit\s*(\d+)/);
+      if (unitMatch) {
+        const n = parseInt(unitMatch[1], 10);
+        const target = units[n - 1] || units.find(u => u.title.toLowerCase().includes('unit ' + n));
+        if (target) {
+          const excerpt = summarizeText(target.text, 400);
+          appendBotMessage(excerpt + `\n\n(Source: ${target.title || 'site content'})`);
+          highlightUnit(target.node);
+          return;
+        }
+      }
 
-/* Projects Grid */
-.projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:1rem; }
-.project-card { background: var(--card-bg); padding:1rem; border-radius:10px; }
+      // Local keyword best-match (fast)
+      let best = { score: 0, unit: null };
+      const tokens = qLower.split(/[^a-z0-9]+/).filter(Boolean);
+      if (tokens.length) {
+        units.forEach(u => {
+          let score = 0;
+          const hay = (u.title + ' ' + u.text).toLowerCase();
+          tokens.forEach(t => {
+            if (!t) return;
+            const re = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+            const matches = hay.match(re) || [];
+            score += matches.length;
+            if (u.title.toLowerCase().includes(t)) score += 2;
+          });
+          if (score > best.score) best = { score, unit: u };
+        });
+      }
+      if (best.score > 0 && best.unit && best.score >= 2) {
+        const excerpt = summarizeText(best.unit.text, 350);
+        appendBotMessage(excerpt + `\n\n(Source: ${best.unit.title || 'site content'})`);
+        highlightUnit(best.unit.node);
+        return;
+      }
 
-/* Contact form */
-.contact-form { display:flex; flex-direction:column; gap:0.6rem; max-width:640px; }
-.contact-form label { display:flex; flex-direction:column; gap:0.25rem; font-size:0.95rem; color:var(--muted); }
-.contact-form input, .contact-form textarea { padding:0.6rem; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); color:var(--text); }
+      // Otherwise: call server LLM
+      const thinking = document.createElement('div');
+      thinking.className = 'ai-message bot';
+      thinking.textContent = 'Thinking...';
+      aiLog.appendChild(thinking);
+      aiLog.scrollTop = aiLog.scrollHeight;
 
-/* Floating AI tutor UI */
-.ai-toggle {
-  position: fixed;
-  right: 1rem;
-  bottom: 1.1rem;
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  z-index: 1200;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  color: white;
-  border: 0;
-}
-.ai-panel {
-  position: fixed;
-  right: 1rem;
-  bottom: 5.6rem;
-  width: min(420px, 92vw);
-  max-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  padding: 0.6rem;
-  gap: 0.6rem;
-  z-index: 1200;
-  overflow: hidden;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.04);
-}
-.ai-header { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; }
-.ai-log { overflow:auto; padding: 0.4rem; flex: 1 1 auto; min-height: 6rem; }
-.ai-message { margin: 0.45rem 0; line-height:1.4; padding: 0.45rem; border-radius: 8px; }
-.ai-message.user { text-align: right; font-weight:600; background: rgba(255,255,255,0.02); }
-.ai-message.bot { text-align: left; background: rgba(0,0,0,0.04); color: #fff; }
-.ai-controls { display:flex; gap:0.5rem; align-items:center; }
-.ai-input { flex:1 1 auto; min-width:0; padding:0.5rem; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.04); color: inherit; }
-.ai-suggestions { display:flex; gap:0.4rem; flex-wrap:wrap; }
+      // Build a short context from units (avoid huge payloads)
+      const pageContext = units.map(u => `${u.title}: ${u.text.slice(0, 800)}`).join('\n\n').slice(0, 4000);
 
-/* Footer */
-.site-footer { margin-top: 2rem; padding: 1rem 0; color: var(--muted); }
+      try {
+        // Adjust the URL to your worker route if needed
+        const res = await fetch('/api/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: q, context: pageContext, max_tokens: 700 })
+        });
+        if (!res.ok) {
+          const errText = await res.text().catch(() => '');
+          thinking.remove();
+          appendBotMessage('Sorry — the tutor is temporarily unavailable. ' + (errText || 'Please try again later.'));
+          return;
+        }
+        const data = await res.json();
+        thinking.remove();
+        if (data && data.reply) {
+          appendBotMessage(data.reply);
+        } else {
+          appendBotMessage("Sorry — I couldn't get a response. Try rephrasing your question.");
+        }
+      } catch (err) {
+        thinking.remove();
+        appendBotMessage("Network error: could not reach the tutor backend. The local tutor can still answer requests like 'Teach me unit 1'.");
+        console.error(err);
+      }
+    }
 
-/* Focus ring improvements */
-:focus { outline: 3px solid rgba(123,97,255,0.14); outline-offset: 2px; border-radius: 6px; }
+    // Summarizer: return first complete sentence(s) up to maxChars
+    function summarizeText(text, maxChars = 250) {
+      if (!text) return "Sorry — no content available.";
+      if (text.length <= maxChars) return text;
+      const cut = text.slice(0, maxChars);
+      const lastDot = Math.max(cut.lastIndexOf('.'), cut.lastIndexOf('!'), cut.lastIndexOf('?'));
+      if (lastDot > Math.floor(maxChars * 0.4)) return cut.slice(0, lastDot + 1) + " ...";
+      return cut.trim() + " ...";
+    }
 
-/* Small screens */
-@media (max-width: 920px) {
-  .home-grid { grid-template-columns: 1fr; }
-  .course-shell { flex-direction: column; }
-  .course-nav { width: 100%; order: 2; }
-  .unit-panels { order: 1; }
-  .ai-panel { right: .6rem; left: .6rem; bottom: 5.6rem; width: auto; max-height: 60vh; }
-}
+    // Highlight referenced unit briefly and scroll into view
+    let highlightTimer = null;
+    function highlightUnit(node) {
+      if (!node) return;
+      node.style.transition = 'box-shadow 200ms ease, transform 200ms ease';
+      const originalZ = node.style.zIndex;
+      node.style.zIndex = 1100;
+      node.style.boxShadow = '0 8px 32px rgba(123,97,255,0.18)';
+      node.style.transform = 'translateY(-6px)';
+      if (highlightTimer) clearTimeout(highlightTimer);
+      highlightTimer = setTimeout(() => {
+        node.style.boxShadow = '';
+        node.style.transform = '';
+        node.style.zIndex = originalZ || '';
+      }, 1100);
+      node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
-/* Utility */
-.hidden { display: none !important; }
-.small { font-size: 0.9rem; color: var(--muted); }
-.center { text-align:center; }
+    // Keyboard shortcut: t toggles the tutor (unless typing)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 't' && !/input|textarea/i.test(document.activeElement.tagName)) {
+        if (aiPanel.hidden) openPanel(); else closePanel();
+      }
+    });
+
+    aiPanel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePanel();
+    });
+
+    // Clicking a unit panel triggers teach about it
+    document.querySelectorAll('.unit-panel').forEach(u => {
+      u.addEventListener('click', (ev) => {
+        if (ev.detail === 0) return;
+        const titleEl = u.querySelector('h2, h3, h4');
+        const title = titleEl ? titleEl.textContent.trim() : '';
+        const q = title ? `Teach me ${title}` : 'Teach me this unit';
+        appendUserMessage(q);
+        handleQuery(q);
+        openPanel();
+      });
+    });
+
+    // Start closed
+    closePanel();
+  } // init
+})();
