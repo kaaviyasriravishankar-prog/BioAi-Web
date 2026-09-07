@@ -1,12 +1,58 @@
-<section class="hero">
-  <div class="hero-text">
-    <h1>Biology, <span class="highlight">decoded.</span></h1>
-    <p>Transforming biological complexity into discoveries that move medicine forward.</p>
-    <button class="cta">Explore the Platform →</button>
-    <a href="#topics" class="link">See how we work →</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>7th Grade Biomedical Engineering Notes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Biomedical Engineering Notes</h1>
+    <p>Explore each topic below</p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="cells">🔬 Cells</button>
+      <button class="tab-btn" data-tab="dna">🧬 DNA & Genetics</button>
+      <button class="tab-btn" data-tab="systems">🫀 Body Systems</button>
+      <button class="tab-btn" data-tab="homeostasis">⚖️ Homeostasis</button>
+      <button class="tab-btn" data-tab="biomechanics">🦴 Biomechanics</button>
+      <button class="tab-btn" data-tab="design">⚙️ Engineering Design</button>
+      <button class="tab-btn" data-tab="devices">🦾 Medical Devices</button>
+      <button class="tab-btn" data-tab="materials">🧪 Biomaterials</button>
+      <button class="tab-btn" data-tab="imaging">🩻 Medical Imaging</button>
+      <button class="tab-btn" data-tab="microbiology">🧫 Microbiology</button>
+      <button class="tab-btn" data-tab="neuroscience">🧠 Neuroscience</button>
+      <button class="tab-btn" data-tab="coding">💻 Coding</button>
+    </div>
+
+    <div class="tab-content">
+      <div id="cells" class="tab-panel active">
+        <h2>🔬 Cells</h2>
+        <p>A cell is the basic unit of life. All living organisms are made of one or more cells.</p>
+        <ul>
+          <li>Prokaryotic → no nucleus</li>
+          <li>Eukaryotic → has a nucleus</li>
+        </ul>
+        <p><strong>BME Connection:</strong> Understanding cells helps engineers develop technologies involving tissues and diseases.</p>
+      </div>
+
+      <div id="dna" class="tab-panel">
+        <h2>🧬 DNA & Genetics</h2>
+        <p>DNA contains genetic instructions used by living organisms.</p>
+        <ul>
+          <li>Gene → section of DNA</li>
+          <li>Chromosome → organized DNA</li>
+          <li>Trait → characteristic</li>
+        </ul>
+        <p><strong>BME Connection:</strong> Genetics is key in biotechnology and diagnostics.</p>
+      </div>
+
+      <!-- Repeat for all other topics -->
+    </div>
   </div>
 
-  <div class="hero-graphic">
-    <canvas id="moleculeCanvas"></canvas>
-  </div>
-</section>
+  <script src="script.js"></script>
+</body>
+</html>
