@@ -1,115 +1,29 @@
-/* BASE */
-body {
-  background: #0b1020;
-  color: #e5e7eb;
-  font-family: 'Manrope', sans-serif;
-  margin: 0;
-}
-
-/* TABS */
-.bme-tabs {
-  margin-top: 40px;
-}
-
-.tab-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.tab-btn {
-  background: rgba(163, 255, 0, 0.1);
+.bme-formula-title {
+  margin-top: 20px;
+  font-size: 1.2rem;
   color: #a3ff00;
-  border: 1px solid #a3ff00;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
-.tab-btn.active {
-  background: #a3ff00;
-  color: #0b1020;
-  box-shadow: 0 0 15px #a3ff00;
+.bme-formula {
+  margin-top: 5px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.tab-content {
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(163, 255, 0, 0.3);
+.toc-title {
+  margin-top: 25px;
+  font-size: 1.2rem;
+  color: #38bdf8;
 }
 
-.tab-panel {
-  display: none;
+.toc-list {
+  margin-top: 10px;
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.6;
 }
 
-.tab-panel.active {
-  display: block;
-}
-
-/* CHAT BUTTON */
-.chat-button {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #a3ff00;
-  color: #0b1020;
-  border: none;
-  padding: 16px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 0 20px #a3ff00;
-}
-
-/* CHATBOX */
-.chat-box {
-  position: fixed;
-  bottom: 90px;
-  right: 25px;
-  width: 300px;
-  background: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 12px;
-  display: none;
-  flex-direction: column;
-}
-
-.chat-header {
-  background: #a3ff00;
-  color: #0b1020;
-  padding: 10px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 12px 12px 0 0;
-}
-
-.chat-body {
-  height: 250px;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.chat-input-area {
-  display: flex;
-  padding: 10px;
-  gap: 5px;
-}
-
-#chatInput {
-  flex: 1;
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-}
-
-#sendBtn {
-  background: #38bdf8;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
+.toc-list li {
+  margin-bottom: 4px;
+  font-size: 1rem;
 }
