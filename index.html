@@ -6,68 +6,13 @@
   <meta name="description" content="NovaBioAI — Biomedical engineering learning site: courses, projects, ethics, and resources." />
   <title>NovaBioAI — Biomedical Engineering</title>
 
-  <!-- Keep using your existing stylesheet so colors, fonts, and background remain unchanged -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Theme stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
   <link rel="icon" href="/favicon.ico" />
-  <style>
-    /* Minimal, non-visual layout only (no colors/fonts/background changed) */
-    .skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-    .ai-toggle {
-      position: fixed;
-      right: 1rem;
-      bottom: 1.1rem;
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      z-index: 1200;
-    }
-    .ai-panel {
-      position: fixed;
-      right: 1rem;
-      bottom: 5.2rem;
-      width: min(420px, 92vw);
-      max-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      border-radius: 12px;
-      padding: 0.6rem;
-      gap: 0.6rem;
-      z-index: 1200;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
-      overflow: hidden;
-      /* keep background implicit to preserve site theme; use transparency fallback */
-      background-clip: padding-box;
-      backdrop-filter: blur(6px);
-    }
-    .ai-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:0.5rem;
-    }
-    .ai-log {
-      overflow:auto;
-      padding: 0.4rem;
-      flex: 1 1 auto;
-    }
-    .ai-message { margin: 0.45rem 0; line-height:1.4; }
-    .ai-message.user { text-align: right; font-weight:600; }
-    .ai-controls { display:flex; gap:0.5rem; align-items:center; }
-    .ai-input { flex:1 1 auto; min-width:0; padding:0.5rem; border-radius:8px; }
-    .ai-suggestions { display:flex; gap:0.4rem; flex-wrap:wrap; }
-    .ai-chip { padding:0.35rem 0.6rem; border-radius:999px; cursor:pointer; font-size:0.9rem; }
-    @media (max-width:600px) {
-      .ai-panel { right: 0.5rem; left: 0.5rem; bottom: 5.8rem; width: auto; max-height: 60vh; }
-      .ai-toggle { right: 0.6rem; bottom: 0.8rem; }
-    }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -75,258 +20,185 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="brand">
-        <a href="#home" aria-label="NovaBioAI Home"><strong>NovaBioAI</strong></a>
-        <div class="tagline">Biomedical Engineering Academy</div>
+        <a href="#home" aria-label="NovaBioAI Home" id="brandLink">
+          <div class="logo-mark" aria-hidden="true">🧬</div>
+          <div class="brand-text">
+            <div class="brand-title">NovaBioAI</div>
+            <div class="brand-sub">Biomedical Engineering Academy</div>
+          </div>
+        </a>
       </div>
 
-      <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="top-tabs" role="navigation" aria-label="Primary">
+        <div role="tablist" aria-label="Main" class="tablist" id="mainTabs">
+          <button role="tab" aria-selected="true" aria-controls="panel-home" id="tab-home" class="tab">Home</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-course" id="tab-course" class="tab">Course</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-projects" id="tab-projects" class="tab">Projects</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-ethics" id="tab-ethics" class="tab">Ethics</button>
+          <button role="tab" aria-selected="false" aria-controls="panel-contact" id="tab-contact" class="tab">Contact</button>
+        </div>
+      </nav>
+
+      <button id="navToggle" class="nav-toggle" aria-controls="mainTabs" aria-expanded="false" aria-label="Toggle navigation">
         ☰
       </button>
-
-      <nav id="mainNav" class="main-nav" role="navigation" aria-label="Primary">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#course">Course</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#ethics">Ethics</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
   <main id="main" class="site-main container" role="main">
-    <section id="home" class="hero">
-      <div class="hero-inner">
-        <h1>NovaBioAI</h1>
-        <p class="lead">Learn → Explore → Design → Test</p>
-        <p>Welcome! 👋 Biomedical engineering combines biology, medicine, engineering, and technology to solve problems related to human health.</p>
+    <!-- Tab panels -->
+    <section id="panel-home" role="tabpanel" aria-labelledby="tab-home" class="panel" data-visible>
+      <div class="hero">
+        <h1>Biology, decoded.</h1>
+        <p class="lead">Learn → Explore → Design → Test — interactive biomedical engineering lessons and projects.</p>
+        <p>NovaBioAI transforms biological complexity into discoveries that move medicine forward.</p>
 
-        <nav class="toc" aria-label="Course table of contents">
-          <h2>Course overview</h2>
-          <ul>
-            <li><a href="#unit-1">Unit 1 — BME Foundations</a></li>
-            <li><a href="#unit-2">Unit 2 — Biology</a></li>
-            <li><a href="#unit-3">Unit 3 — The Human Body</a></li>
-            <li><a href="#unit-4">Unit 4 — Engineering the Body</a></li>
-            <li><a href="#unit-5">Unit 5 — Seeing Inside the Body</a></li>
-            <li><a href="#unit-6">Unit 6 — Materials & Medicine</a></li>
-            <li><a href="#unit-7">Unit 7 — Robots & Technology</a></li>
-            <li><a href="#unit-8">Unit 8 — Engineering Design</a></li>
-            <li><a href="#unit-9">Unit 9 — BME Projects</a></li>
-            <li><a href="#unit-10">Unit 10 — BME Ethics</a></li>
-          </ul>
-        </nav>
+        <div class="home-grid">
+          <article class="card">
+            <h3>Courses</h3>
+            <p>Structured units covering foundations, biology, imaging, biomaterials, AI in healthcare and more.</p>
+          </article>
+          <article class="card">
+            <h3>Projects</h3>
+            <p>Design challenges, prototyping ideas and student showcases — get hands-on experience.</p>
+          </article>
+          <article class="card">
+            <h3>Tutor AI</h3>
+            <p>Ask the built-in NovaBioAI Tutor to teach units or explain concepts from the site.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="course" class="course">
-      <h2>Course</h2>
+    <section id="panel-course" role="tabpanel" aria-labelledby="tab-course" class="panel" hidden>
+      <div class="course-shell">
+        <aside class="course-nav" aria-label="Units">
+          <div class="units-title">Units</div>
+          <ul class="units-list" role="tablist" aria-orientation="vertical" id="unitTabs">
+            <li><button role="tab" aria-selected="true" aria-controls="unit-1-panel" id="unit-1-tab" class="unit-tab">Unit 1 • BME Foundations</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-2-panel" id="unit-2-tab" class="unit-tab">Unit 2 • Biology</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-3-panel" id="unit-3-tab" class="unit-tab">Unit 3 • Human Body</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-4-panel" id="unit-4-tab" class="unit-tab">Unit 4 • Engineering the Body</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-5-panel" id="unit-5-tab" class="unit-tab">Unit 5 • Imaging & Sensors</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-6-panel" id="unit-6-tab" class="unit-tab">Unit 6 • Materials & Medicine</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-7-panel" id="unit-7-tab" class="unit-tab">Unit 7 • Robots & AI</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-8-panel" id="unit-8-tab" class="unit-tab">Unit 8 • Design Process</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-9-panel" id="unit-9-tab" class="unit-tab">Unit 9 • Projects</button></li>
+            <li><button role="tab" aria-selected="false" aria-controls="unit-10-panel" id="unit-10-tab" class="unit-tab">Unit 10 • Ethics</button></li>
+          </ul>
+        </aside>
 
-      <article id="unit-1" class="unit">
-        <h3>UNIT 1 — BME FOUNDATIONS</h3>
-        <h4>01 • What Is Biomedical Engineering?</h4>
-        <p>Biomedical engineering uses engineering principles to solve problems involving biology and medicine.</p>
-        <p><strong>What does a biomedical engineer do?</strong></p>
-        <ul>
-          <li>Design a medical device</li>
-          <li>Develop a prosthetic limb</li>
-          <li>Improve medical imaging</li>
-          <li>Create sensors</li>
-          <li>Study biomaterials</li>
-          <li>Develop computer models</li>
-          <li>Help design rehabilitation technology</li>
-        </ul>
-        <p><strong>Key Idea</strong></p>
-        <p>Biomedical engineering = using engineering to solve problems related to living systems and healthcare.</p>
+        <div class="unit-panels">
+          <article id="unit-1-panel" role="tabpanel" aria-labelledby="unit-1-tab" class="unit-panel" data-visible>
+            <h2>Unit 1 — BME Foundations</h2>
+            <p>Biomedical engineering uses engineering principles to solve problems involving biology and medicine.</p>
+            <ul>
+              <li>Design medical devices</li>
+              <li>Develop prosthetics</li>
+              <li>Improve medical imaging</li>
+            </ul>
+          </article>
 
-        <p><strong>Connect the Subjects</strong></p>
-        <ul>
-          <li>Biology → Understand the body</li>
-          <li>Engineering → Design a solution</li>
-          <li>Technology → Build and analyze it</li>
-          <li>Medicine → Apply it to healthcare</li>
-        </ul>
-      </article>
+          <article id="unit-2-panel" role="tabpanel" aria-labelledby="unit-2-tab" class="unit-panel" hidden>
+            <h2>Unit 2 — Biology</h2>
+            <h3>Cells</h3>
+            <p>The cell is the basic unit of life. Important structures: nucleus (DNA), membrane, mitochondria, cytoplasm, ribosomes.</p>
+            <h3>DNA & Genetics</h3>
+            <p>DNA contains genetic instructions. Gene = section of DNA; Chromosome = structure containing DNA.</p>
+          </article>
 
-      <article id="unit-2" class="unit">
-        <h3>UNIT 2 — BIOLOGY</h3>
+          <article id="unit-3-panel" role="tabpanel" aria-labelledby="unit-3-tab" class="unit-panel" hidden>
+            <h2>Unit 3 — The Human Body</h2>
+            <p>Organization: Cells → Tissues → Organs → Systems (circulatory, respiratory, nervous, skeletal, muscular, immune, digestive).</p>
+            <h3>Cardiovascular system</h3>
+            <p>Heart, blood, vessels — engineers make monitoring systems and sensors.</p>
+          </article>
 
-        <h4>02 • Cells</h4>
-        <p><strong>What is a cell?</strong> A cell is the basic unit of life.</p>
-        <p><strong>Important cell structures</strong></p>
-        <table class="info-table" summary="Cell structures and their roles">
-          <thead>
-            <tr><th>Structure</th><th>Job</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Nucleus</td><td>Contains DNA</td></tr>
-            <tr><td>Cell membrane</td><td>Controls what enters and leaves</td></tr>
-            <tr><td>Mitochondria</td><td>Help provide usable energy</td></tr>
-            <tr><td>Cytoplasm</td><td>Where many cell activities occur</td></tr>
-            <tr><td>Ribosomes</td><td>Make proteins</td></tr>
-          </tbody>
-        </table>
-        <p><strong>BME CONNECTION</strong> — Biomedical engineers study cells when working on tissue engineering, biomaterials, and diagnostics.</p>
+          <article id="unit-4-panel" role="tabpanel" aria-labelledby="unit-4-tab" class="unit-panel" hidden>
+            <h2>Unit 4 — Engineering the Body</h2>
+            <p>Prosthetics, implants and rehabilitation devices combine materials, mechanics, sensors and software.</p>
+          </article>
 
-        <h4>03 • DNA &amp; Genetics</h4>
-        <p><strong>DNA</strong></p>
-        <p>DNA contains genetic instructions used by cells.</p>
-        <p><strong>Important vocabulary</strong></p>
-        <ul>
-          <li>Gene → section of DNA</li>
-          <li>Chromosome → structure containing DNA</li>
-          <li>Genetics → study of heredity and variation</li>
-        </ul>
-        <p><strong>BME CONNECTION</strong> — Biomedical engineering can involve technologies for studying DNA, genetic variation, and genetic testing.</p>
-      </article>
+          <article id="unit-5-panel" role="tabpanel" aria-labelledby="unit-5-tab" class="unit-panel" hidden>
+            <h2>Unit 5 — Seeing Inside the Body</h2>
+            <p>Medical imaging: X-ray, CT, MRI, ultrasound — image processing is a core BME area.</p>
+            <h3>Sensors & Wearables</h3>
+            <p>Wearables measure signals: heart-rate, oxygen, glucose and more.</p>
+          </article>
 
-      <article id="unit-3" class="unit">
-        <h3>UNIT 3 — THE HUMAN BODY</h3>
+          <article id="unit-6-panel" role="tabpanel" aria-labelledby="unit-6-tab" class="unit-panel" hidden>
+            <h2>Unit 6 — Materials & Medicine</h2>
+            <p>Biomaterials for implants, controlled drug delivery, nanoparticles and tissue engineering are key topics.</p>
+          </article>
 
-        <h4>04 • Body Systems</h4>
-        <p>The body is organized: Cells → Tissues → Organs → Organ Systems → Organism</p>
-        <p>Systems you'll study:</p>
-        <ul>
-          <li>Circulatory</li>
-          <li>Respiratory</li>
-          <li>Nervous</li>
-          <li>Skeletal</li>
-          <li>Muscular</li>
-          <li>Immune</li>
-          <li>Digestive</li>
-        </ul>
-        <p><strong>ENGINEERING CHALLENGE</strong></p>
-        <p>Problem: A body system isn't functioning normally.</p>
-        <p>Question: How could technology help monitor, support, or replace part of its function?</p>
+          <article id="unit-7-panel" role="tabpanel" aria-labelledby="unit-7-tab" class="unit-panel" hidden>
+            <h2>Unit 7 — Robots & Technology</h2>
+            <p>Surgical robots, automation, sensors, and AI in healthcare.</p>
+          </article>
 
-        <h4>05 • The Cardiovascular System</h4>
-        <p><strong>Main parts</strong>: Heart, Blood, Blood vessels</p>
-        <p><strong>Main job</strong>: Transport substances around the body.</p>
-        <p><strong>Blood pathway</strong>: Body → Right Heart → Lungs → Left Heart → Body</p>
-        <p><strong>BME CONNECTION</strong> — Biomedical engineers work on technologies such as heart-monitoring systems, sensors, medical devices, and computer-based analysis.</p>
+          <article id="unit-8-panel" role="tabpanel" aria-labelledby="unit-8-tab" class="unit-panel" hidden>
+            <h2>Unit 8 — Engineering Design</h2>
+            <ol>
+              <li>Identify the problem</li>
+              <li>Research</li>
+              <li>Design & Prototype</li>
+              <li>Test & Improve</li>
+            </ol>
+          </article>
 
-        <h4>06 • The Nervous System</h4>
-        <p><strong>Main parts</strong>: Brain + Spinal Cord + Nerves</p>
-        <p>The nervous system allows the body to receive information, process it, and respond.</p>
-        <p><strong>BME CONNECTION</strong> — Biomedical engineering can involve neural interfaces, brain-related technology, assistive devices, and prosthetic control.</p>
-      </article>
+          <article id="unit-9-panel" role="tabpanel" aria-labelledby="unit-9-tab" class="unit-panel" hidden>
+            <h2>Unit 9 — BME Projects</h2>
+            <p>Project idea: design a medical device — describe problem, research, materials, prototype and testing plan.</p>
+          </article>
 
-      <article id="unit-4" class="unit">
-        <h3>UNIT 4 — ENGINEERING THE BODY</h3>
-
-        <h4>07 • Bones, Joints &amp; Movement</h4>
-        <p><strong>Bones</strong> support the body, protect organs, help produce movement.</p>
-        <p><strong>Engineering connection</strong> — Engineers can design prosthetics, artificial joints, braces, rehabilitation devices.</p>
-
-        <h4>08 • Prosthetics</h4>
-        <p>A prosthesis is an artificial replacement for a missing body part. A prosthetic system can involve mechanical parts, materials, sensors, and electronics.</p>
-        <p><strong>Engineering question</strong>: How can we design a device that helps a person perform a movement?</p>
-      </article>
-
-      <article id="unit-5" class="unit">
-        <h3>UNIT 5 — SEEING INSIDE THE BODY</h3>
-
-        <h4>09 • Medical Imaging</h4>
-        <p>Medical imaging creates images of structures inside the body. Major technologies include:</p>
-        <ul>
-          <li>X-ray — Uses X-rays to create images.</li>
-          <li>CT — Combines many X-ray measurements to create detailed images.</li>
-          <li>MRI — Uses magnetic fields and radio waves.</li>
-          <li>Ultrasound — Uses high-frequency sound waves.</li>
-        </ul>
-
-        <h4>10 • Sensors &amp; Wearable Technology</h4>
-        <p>A sensor detects or measures something.</p>
-        <p>Examples: Smartwatch sensors, Glucose monitors, Heart-rate sensors, Oxygen-level sensors</p>
-        <p><strong>Basic system</strong>: Body → Sensor → Signal → Computer → Information</p>
-        <p><strong>Engineering question</strong>: How can we measure something happening inside or on the body without causing harm?</p>
-      </article>
-
-      <article id="unit-6" class="unit">
-        <h3>UNIT 6 — MATERIALS &amp; MEDICINE</h3>
-
-        <h4>11 • Biomaterials</h4>
-        <p>A biomaterial is a material designed to interact with a biological system for a medical purpose.</p>
-        <p>Engineers consider strength, durability, function, safety, biocompatibility. Applications: Implants, Dental devices, Artificial joints, Medical devices.</p>
-
-        <h4>12 • Drug Delivery</h4>
-        <p><strong>The problem</strong>: Medicine needs to reach the right place and work effectively.</p>
-        <p><strong>BME solutions</strong>: Specialized delivery systems, Controlled-release systems, Nanoparticle-based approaches.</p>
-
-        <h4>13 • Tissue Engineering</h4>
-        <p>Tissue engineering uses engineering and biological principles to develop or support tissues. Basic concept: Cells + Materials + Biological signals → Tissue engineering</p>
-      </article>
-
-      <article id="unit-7" class="unit">
-        <h3>UNIT 7 — ROBOTS &amp; TECHNOLOGY</h3>
-
-        <h4>14 • Surgical Robots</h4>
-        <p>Surgical robots assist with procedures. Engineers work on mechanical systems, sensors, cameras, control systems, and software.</p>
-
-        <h4>15 • Computers in Biomedical Engineering</h4>
-        <p>Computers help analyze data, process images, create models, control devices, and study biological information. Programming languages like Python are useful.</p>
-
-        <h4>16 • Artificial Intelligence in Healthcare</h4>
-        <p>AI systems can analyze patterns in large datasets. Applications include medical-image analysis, data analysis, prediction, and research.</p>
-        <p><strong>⚠️ Important</strong> — AI is a tool. Medical technologies must be carefully tested and evaluated for safety and reliability.</p>
-      </article>
-
-      <article id="unit-8" class="unit">
-        <h3>UNIT 8 — ENGINEERING DESIGN</h3>
-
-        <h4>17 • The Engineering Design Process</h4>
-        <ol>
-          <li>Identify the problem</li>
-          <li>Research</li>
-          <li>Brainstorm solutions</li>
-          <li>Design</li>
-          <li>Build a prototype</li>
-          <li>Test</li>
-          <li>Analyze</li>
-          <li>Improve</li>
-        </ol>
-      </article>
-
-      <article id="unit-9" class="unit">
-        <h3>UNIT 9 — BME PROJECTS</h3>
-
-        <h4>18 • Design Your Own Medical Device</h4>
-        <p>Mission: Design a device that solves a healthcare-related problem.</p>
-        <p>Your website project page could have:</p>
-        <ul>
-          <li>Problem: What needs to be solved?</li>
-          <li>Research: What do you know?</li>
-          <li>Design: What will you create?</li>
-          <li>Materials: What would it be made from?</li>
-          <li>Prototype: What would it look like?</li>
-          <li>Testing: How would you determine whether it works?</li>
-          <li>Improvement: What would you change?</li>
-        </ul>
-      </article>
-
-      <article id="unit-10" class="unit">
-        <h3>UNIT 10 — BME ETHICS</h3>
-
-        <h4>19 • Safety &amp; Ethics</h4>
-        <p>Biomedical engineers work with technology that can affect people's health. They must think about privacy, safety, fairness, accuracy, reliability, and accessibility.</p>
-        <p><strong>Golden Rule</strong>: A biomedical invention must be designed with safety and responsible testing in mind.</p>
-      </article>
+          <article id="unit-10-panel" role="tabpanel" aria-labelledby="unit-10-tab" class="unit-panel" hidden>
+            <h2>Unit 10 — BME Ethics</h2>
+            <p>Privacy, safety, reliability, fairness and accessibility are essential considerations for medical tech.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" class="panel" hidden>
       <h2>Projects</h2>
-      <p>Use this space to showcase student or lab projects, prototypes, and experiments.</p>
+      <p>Showcase student projects and prototypes. Add images, videos, and short descriptions here.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>Heart Monitor Prototype</h4>
+          <p>Wearable sensor + algorithm demo.</p>
+        </div>
+        <div class="project-card">
+          <h4>3D-printed Prosthetic Cover</h4>
+          <p>Lightweight materials and sensor integration.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="ethics" class="ethics">
+    <section id="panel-ethics" role="tabpanel" aria-labelledby="tab-ethics" class="panel" hidden>
       <h2>Ethics & Safety</h2>
-      <p>Responsible design, testing, and privacy are essential for biomedical technologies.</p>
+      <p>Responsible design, testing, consent and data privacy are essential for biomedical technologies.</p>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" class="panel" hidden>
       <h2>Contact</h2>
-      <p>Provide an email or contact form here.</p>
+      <p>Get in touch — add an email or contact form endpoint here.</p>
+      <form class="contact-form" action="#" method="post" onsubmit="alert('This is a demo form — integrate a backend to enable messaging.'); return false;">
+        <label>
+          Name
+          <input name="name" type="text" required />
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="primary">Send message</button>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -337,10 +209,10 @@
     <div class="ai-header">
       <div>
         <strong>NovaBioAI Tutor</strong>
-        <div style="font-size:.85rem">Ask about units, topics, or say "teach me unit 3".</div>
+        <div class="small">Try: "Teach me unit 2", "Explain MRI", or ask any question — responses may cite the site or use the LLM backend.</div>
       </div>
-      <div style="display:flex;gap:.4rem;align-items:center;">
-        <button id="aiSpeakToggle" title="Toggle speech">🔊</button>
+      <div class="ai-controls-top">
+        <button id="aiSpeakToggle" aria-pressed="false" title="Toggle speech">🔊</button>
         <button id="aiClose" aria-label="Close tutor">✕</button>
       </div>
     </div>
@@ -360,169 +232,60 @@
     </div>
   </aside>
 
+  <footer class="site-footer container">
+    <div class="small">© NovaBioAI — Built for learning. Use responsibly — medical technologies require careful testing. The tutor provides educational information and is not a substitute for professional medical advice.</div>
+  </footer>
+
+  <script src="ai-tutor.js" defer></script>
   <script>
-    // Build simple knowledge base from the page units
-    const units = Array.from(document.querySelectorAll('.unit')).map(unit => {
-      const id = unit.id || '';
-      const titleEl = unit.querySelector('h3') || unit.querySelector('h4') || unit.querySelector('h2');
-      const title = titleEl ? titleEl.textContent.trim() : id;
-      const text = unit.innerText.replace(/\\s+/g, ' ').trim();
-      return { id, title, text, node: unit };
-    });
-
-    // Simple UI elements
-    const aiToggle = document.getElementById('aiToggle');
-    const aiPanel = document.getElementById('aiPanel');
-    const aiClose = document.getElementById('aiClose');
-    const aiLog = document.getElementById('aiLog');
-    const aiInput = document.getElementById('aiInput');
-    const aiSend = document.getElementById('aiSend');
-    const aiChips = document.querySelectorAll('.ai-chip');
-    const aiSpeakToggle = document.getElementById('aiSpeakToggle');
-
-    let speechEnabled = false;
-    aiSpeakToggle.addEventListener('click', () => {
-      speechEnabled = !speechEnabled;
-      aiSpeakToggle.style.opacity = speechEnabled ? '1' : '0.55';
-    });
-
-    function openPanel() {
-      aiPanel.hidden = false;
-      aiPanel.setAttribute('aria-hidden','false');
-      aiToggle.setAttribute('aria-expanded','true');
-      aiToggle.setAttribute('aria-pressed','true');
-      aiInput.focus();
-      appendBotMessage("Hello! I'm your NovaBioAI Tutor — ask me about units, topics, or say 'teach me unit 3'.");
-    }
-    function closePanel() {
-      aiPanel.hidden = true;
-      aiPanel.setAttribute('aria-hidden','true');
-      aiToggle.setAttribute('aria-expanded','false');
-      aiToggle.setAttribute('aria-pressed','false');
-      aiToggle.focus();
-    }
-
-    aiToggle.addEventListener('click', () => {
-      if (aiPanel.hidden) openPanel(); else closePanel();
-    });
-    aiClose.addEventListener('click', closePanel);
-
-    // Clicking suggestion chips
-    aiChips.forEach(chip => chip.addEventListener('click', () => {
-      const q = chip.dataset.q;
-      appendUserMessage(q);
-      handleQuery(q);
-    }));
-
-    aiSend.addEventListener('click', () => {
-      const q = aiInput.value.trim();
-      if (!q) return;
-      appendUserMessage(q);
-      aiInput.value = '';
-      handleQuery(q);
-    });
-
-    aiInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') { e.preventDefault(); aiSend.click(); }
-    });
-
-    function appendUserMessage(text) {
-      const p = document.createElement('div');
-      p.className = 'ai-message user';
-      p.textContent = text;
-      aiLog.appendChild(p);
-      aiLog.scrollTop = aiLog.scrollHeight;
-    }
-    function appendBotMessage(text) {
-      const p = document.createElement('div');
-      p.className = 'ai-message bot';
-      p.textContent = text;
-      aiLog.appendChild(p);
-      aiLog.scrollTop = aiLog.scrollHeight;
-      if (speechEnabled && 'speechSynthesis' in window) {
-        const u = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(u);
-      }
-    }
-
-    // Basic matching / teaching behavior
-    function handleQuery(q) {
-      const qLower = q.toLowerCase();
-
-      // Direct "teach me unit N" or "unit N" detection
-      const unitMatch = qLower.match(/unit\\s*(\\d+)/);
-      if (unitMatch) {
-        const n = parseInt(unitMatch[1], 10);
-        const target = units[n - 1] || units.find(u => u.title.toLowerCase().includes('unit ' + n));
-        if (target) {
-          const excerpt = summarizeText(target.text, 250);
-          appendBotMessage(excerpt);
-          return;
-        }
-      }
-
-      // Look for keywords that match titles or the body
-      let best = {score:0, unit:null};
-      const tokens = qLower.split(/[^a-z0-9]+/).filter(Boolean);
-      units.forEach(u => {
-        let score = 0;
-        const hay = (u.title + ' ' + u.text).toLowerCase();
-        tokens.forEach(t => {
-          if (hay.includes(t)) score += (hay.match(new RegExp(t, 'g')) || []).length;
-          if (u.title.toLowerCase().includes(t)) score += 2;
+    // Main tab navigation (accessible)
+    (function () {
+      function setActiveTab(tabEl, tablist) {
+        Array.from(tablist.querySelectorAll('[role="tab"]')).forEach(t => {
+          t.setAttribute('aria-selected', 'false');
+          const panel = document.getElementById(t.getAttribute('aria-controls'));
+          if (panel) panel.hidden = true;
         });
-        if (score > best.score) best = {score, unit: u};
-      });
-
-      if (best.score > 0 && best.unit) {
-        const excerpt = summarizeText(best.unit.text, 300);
-        appendBotMessage(excerpt);
-        return;
-      }
-
-      // Fallback: brief site overview
-      appendBotMessage("I couldn't find a direct match. Try: 'Teach me unit 1', 'Explain cells', or ask about 'prosthetics' or 'medical imaging'.");
-    }
-
-    // Simple summarizer: return first N characters with complete sentences
-    function summarizeText(text, maxChars=250) {
-      if (!text) return "Sorry — I don't have content for that topic.";
-      if (text.length <= maxChars) return text;
-      const cut = text.slice(0, maxChars);
-      const lastDot = Math.max(cut.lastIndexOf('.'), cut.lastIndexOf('!'), cut.lastIndexOf('?'));
-      if (lastDot > Math.floor(maxChars * 0.4)) return cut.slice(0, lastDot + 1) + " ...";
-      return cut.trim() + " ...";
-    }
-
-    // Initialize with a welcome message (keeps quiet until user opens)
-    // Provide keyboard shortcut: press "t" to open tutor
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 't' && !/input|textarea/i.test(document.activeElement.tagName)) {
-        if (aiPanel.hidden) openPanel(); else closePanel();
-      }
-    });
-
-    // Accessibility: trap focus in panel when open (simple)
-    aiPanel.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePanel();
-    });
-
-    // When user clicks a unit on the page, offer to teach that unit (progressive enhancement)
-    document.querySelectorAll('.unit').forEach(u => {
-      u.addEventListener('click', (ev) => {
-        // Only trigger on deliberate clicks (not text selection)
-        if (ev.detail > 0) {
-          const title = (u.querySelector('h3')||u.querySelector('h4')||{}).textContent || '';
-          appendUserMessage('Teach me about: ' + title);
-          handleQuery('Teach me ' + title);
-          openPanel();
+        tabEl.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(tabEl.getAttribute('aria-controls'));
+        if (panel) {
+          panel.hidden = false;
+          panel.setAttribute('data-visible', '');
+          panel.scrollTop = 0;
         }
-      });
-    });
+      }
 
-    // Ensure panel initially closed
-    closePanel();
+      // top-level tabs
+      const mainTabs = document.getElementById('mainTabs');
+      mainTabs.addEventListener('click', (e) => {
+        const t = e.target.closest('[role="tab"]');
+        if (!t) return;
+        setActiveTab(t, mainTabs);
+      });
+
+      // unit tabs (vertical)
+      const unitTabs = document.getElementById('unitTabs');
+      unitTabs.addEventListener('click', (e) => {
+        const t = e.target.closest('[role="tab"]');
+        if (!t) return;
+        Array.from(unitTabs.querySelectorAll('[role="tab"]')).forEach(btn => {
+          btn.setAttribute('aria-selected', 'false');
+          const p = document.getElementById(btn.getAttribute('aria-controls'));
+          if (p) p.hidden = true;
+        });
+        t.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = false;
+      });
+
+      // mobile nav toggle: show/hide top tabs
+      const navToggle = document.getElementById('navToggle');
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        document.querySelector('.top-tabs').classList.toggle('open', !expanded);
+      });
+    })();
   </script>
 </body>
 </html>
