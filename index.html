@@ -1,359 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Biomedical Engineering learning hub with interactive topics and an AI tutor.">
-  <title>NOVA BioBME | Biomedical Engineering</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="NOVA BioBME home">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span>NOVA<span class="brand-muted">/BIOBME</span></span>
-    </a>
-    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-      <a class="active" href="#platform">Topics</a>
-      <a href="#about">About BME</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="header-cta" href="#contact">Start learning <span aria-hidden="true">↗</span></a>
-    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
-  </header>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero section-shell">
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="pulse"></span> Biomedical Engineering</p>
-        <h1>🏠 Biomedical<br><em>Engineering</em></h1>
-
-        <p class="hero-lede">
-          Biomedical Engineering (BME) combines biology, medicine, engineering, and technology to solve
-          problems related to the human body and healthcare.
-        </p>
-
-        <p class="hero-lede">
-          <strong>Biology + Engineering + Technology + Medicine = Biomedical Engineering</strong>
-        </p>
-
-        <div class="hero-toc">
-          <h3 class="toc-heading">📘 Table of Contents</h3>
-          <p class="hero-lede">1. 🔬 Cells</p>
-          <p class="hero-lede">2. 🧬 DNA & Genetics</p>
-          <p class="hero-lede">3. 🫀 Human Body Systems</p>
-          <p class="hero-lede">4. ⚖️ Homeostasis</p>
-          <p class="hero-lede">5. 🦴 Biomechanics</p>
-          <p class="hero-lede">6. ⚙️ Engineering Design</p>
-          <p class="hero-lede">7. 🦾 Medical Devices</p>
-          <p class="hero-lede">8. 🧪 Biomaterials</p>
-          <p class="hero-lede">9. 🩻 Medical Imaging</p>
-          <p class="hero-lede">10. 🧫 Microbiology</p>
-          <p class="hero-lede">11. 🧠 Neuroscience</p>
-          <p class="hero-lede">12. 💻 Biomedical Technology & Coding</p>
-        </div>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="#platform">Open Topics <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="#about">Learn about BME <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-
-      <div class="hero-visual reveal" aria-label="Abstract molecular network visualization" role="img">
-        <div class="visual-label label-top">LIVE MODEL <span></span></div>
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
-        <div class="molecule molecule-main"><span></span></div>
-        <div class="molecule molecule-small small-one"><span></span></div>
-        <div class="molecule molecule-small small-two"><span></span></div>
-        <div class="connector connector-a"></div>
-        <div class="connector connector-b"></div>
-        <div class="visual-label label-bottom">BIOENGINEERING / ACTIVE</div>
-        <div class="visual-caption">Mapping what<br>cannot be seen.</div>
-      </div>
-    </section>
-
-    <!-- PLATFORM / TABS -->
-    <section class="platform section-shell" id="platform">
-      <div class="section-intro reveal">
-        <p class="eyebrow">01 / Core Topics</p>
-        <h2>A new lens on<br><em>Biomedical Engineering.</em></h2>
-      </div>
-
-      <div class="platform-copy reveal">
-        <p>Explore the 12 core pillars of Biomedical Engineering through interactive topics and a built-in AI tutor.</p>
-      </div>
-
-      <div class="bme-tabs reveal">
-        <div class="tab-buttons">
-          <button class="tab-btn active" data-tab="cells">🔬 Cells</button>
-          <button class="tab-btn" data-tab="dna">🧬 DNA & Genetics</button>
-          <button class="tab-btn" data-tab="systems">🫀 Human Body Systems</button>
-          <button class="tab-btn" data-tab="homeostasis">⚖️ Homeostasis</button>
-          <button class="tab-btn" data-tab="biomechanics">🦴 Biomechanics</button>
-          <button class="tab-btn" data-tab="design">⚙️ Engineering Design</button>
-          <button class="tab-btn" data-tab="devices">🦾 Medical Devices</button>
-          <button class="tab-btn" data-tab="materials">🧪 Biomaterials</button>
-          <button class="tab-btn" data-tab="imaging">🩻 Medical Imaging</button>
-          <button class="tab-btn" data-tab="microbiology">🧫 Microbiology</button>
-          <button class="tab-btn" data-tab="neuroscience">🧠 Neuroscience</button>
-          <button class="tab-btn" data-tab="coding">💻 Biomedical Technology & Coding</button>
-        </div>
-
-        <div class="tab-content">
-          <div id="cells" class="tab-panel active">
-            <h3>🔬 Cells</h3>
-            <p>A cell is the basic unit of life. All living organisms are made of one or more cells.</p>
-            <h4>Cell Types</h4>
-            <ul>
-              <li>Prokaryotic → does not have a nucleus; bacteria are examples.</li>
-              <li>Eukaryotic → has a nucleus; animal and plant cells are examples.</li>
-            </ul>
-            <h4>Important Organelles</h4>
-            <table>
-              <tr><th>Part</th><th>Function</th></tr>
-              <tr><td>Nucleus</td><td>Contains DNA and controls many cell activities</td></tr>
-              <tr><td>Cell membrane</td><td>Controls what enters and leaves</td></tr>
-              <tr><td>Mitochondria</td><td>Produce usable energy</td></tr>
-              <tr><td>Ribosomes</td><td>Make proteins</td></tr>
-              <tr><td>Cytoplasm</td><td>Where many cell activities occur</td></tr>
-              <tr><td>Vacuole</td><td>Stores materials</td></tr>
-              <tr><td>Cell wall</td><td>Supports plant cells</td></tr>
-              <tr><td>Chloroplast</td><td>Performs photosynthesis in plant cells</td></tr>
-            </table>
-            <p><strong>⭐ Remember:</strong> Nucleus = DNA, Mitochondria = Energy, Ribosomes = Proteins, Membrane = Gatekeeper.</p>
-            <p><strong>🩺 BME Connection:</strong> Understanding cells helps engineers develop technologies involving tissues, diseases, medicines, and medical devices.</p>
-          </div>
-
-          <div id="dna" class="tab-panel">
-            <h3>🧬 DNA & Genetics</h3>
-            <p>DNA contains the genetic instructions used by living organisms.</p>
-            <h4>Important Terms</h4>
-            <ul>
-              <li>Gene → a section of DNA</li>
-              <li>Chromosome → organized DNA and proteins</li>
-              <li>Trait → a characteristic</li>
-              <li>Heredity → passing genetic information from parents to offspring</li>
-              <li>Mutation → a change in DNA</li>
-            </ul>
-            <p><strong>⭐ Remember:</strong> DNA → Genes → Chromosomes → Genetic Information.</p>
-            <p><strong>🩺 BME Connection:</strong> Genetics is important in biotechnology, genetic testing, disease research, and diagnostic technologies.</p>
-          </div>
-
-          <div id="systems" class="tab-panel">
-            <h3>🫀 Human Body Systems</h3>
-            <p>The human body has many systems that work together.</p>
-            <h4>Examples</h4>
-            <ul>
-              <li>❤️ Circulatory System → moves blood, oxygen, nutrients, hormones, and wastes.</li>
-              <li>🫁 Respiratory System → brings oxygen in and removes carbon dioxide.</li>
-              <li>🧠 Nervous System → receives information and coordinates responses.</li>
-              <li>🍎 Digestive System → breaks food down and absorbs nutrients.</li>
-              <li>🦴 Musculoskeletal System → supports the body and allows movement.</li>
-              <li>🛡️ Immune System → helps protect the body from pathogens.</li>
-              <li>🚽 Urinary System → removes wastes and regulates water and salts.</li>
-            </ul>
-            <p><strong>⭐ Remember:</strong> Body systems work together to keep the body functioning.</p>
-          </div>
-
-          <div id="homeostasis" class="tab-panel">
-            <h3>⚖️ Homeostasis</h3>
-            <p>Homeostasis is maintaining relatively stable internal conditions.</p>
-            <h4>Examples</h4>
-            <ul>
-              <li>🌡️ Body temperature</li>
-              <li>💧 Water balance</li>
-              <li>🍬 Blood glucose</li>
-              <li>❤️ Heart rate</li>
-            </ul>
-            <p>Example: Body gets hot → sweating increases → heat is released → body cools.</p>
-            <p><strong>🩺 BME Connection:</strong> Biomedical engineers can design sensors and monitoring devices that measure conditions in the body.</p>
-            <p><strong>⭐ Remember:</strong> Homeostasis = internal balance.</p>
-          </div>
-
-          <div id="biomechanics" class="tab-panel">
-            <h3>🦴 Biomechanics</h3>
-            <p>Biomechanics applies mechanics and physics to living organisms.</p>
-            <p>It studies force, motion, movement, bones, muscles, and joints.</p>
-            <p>Example: Muscle produces force → bone moves → joint allows movement.</p>
-            <p><strong>🩺 BME Connection:</strong> Biomechanics is used to design prosthetic limbs, artificial joints, braces, and assistive devices.</p>
-            <p><strong>⭐ Remember:</strong> Biomechanics = Biology + Mechanics.</p>
-          </div>
-
-          <div id="design" class="tab-panel">
-            <h3>⚙️ Engineering Design</h3>
-            <p>Biomedical engineers use the engineering design process to solve problems.</p>
-            <ol>
-              <li>Identify the problem</li>
-              <li>Research</li>
-              <li>Brainstorm</li>
-              <li>Design</li>
-              <li>Build a prototype</li>
-              <li>Test</li>
-              <li>Improve</li>
-            </ol>
-            <p>Example: Problem → someone needs help holding an object → engineer designs, builds, tests, and improves an assistive device.</p>
-            <p><strong>⭐ Remember:</strong> Engineering is a cycle. Testing helps engineers improve designs.</p>
-          </div>
-
-          <div id="devices" class="tab-panel">
-            <h3>🦾 Medical Devices</h3>
-            <p>A medical device is technology designed for a healthcare purpose.</p>
-            <h4>Examples</h4>
-            <ul>
-              <li>🦿 Prosthetic limbs</li>
-              <li>❤️ Pacemakers</li>
-              <li>🦴 Artificial joints</li>
-              <li>🦻 Hearing aids</li>
-              <li>♿ Wheelchairs</li>
-              <li>🩺 Monitoring devices</li>
-              <li>🦾 Assistive devices</li>
-            </ul>
-            <p>Engineers consider safety, function, comfort, reliability, and materials.</p>
-            <p><strong>⭐ Remember:</strong> Medical device = technology used for a healthcare purpose.</p>
-          </div>
-
-          <div id="materials" class="tab-panel">
-            <h3>🧪 Biomaterials</h3>
-            <p>Biomaterials are materials used in medical applications that interact with biological systems.</p>
-            <h4>Examples</h4>
-            <ul>
-              <li>Metals</li>
-              <li>Polymers</li>
-              <li>Ceramics</li>
-              <li>Hydrogels</li>
-            </ul>
-            <h4>Important Properties</h4>
-            <p>A biomaterial may need to be strong, durable, flexible, safe, and suitable for its intended use.</p>
-            <p><strong>Biocompatibility:</strong> how suitable a material is for its intended interaction with the body.</p>
-            <p><strong>🩺 BME Connection:</strong> Biomaterials can be used in implants, prosthetics, and other medical technologies.</p>
-            <p><strong>⭐ Remember:</strong> Biomaterial = material used for a biomedical purpose.</p>
-          </div>
-
-          <div id="imaging" class="tab-panel">
-            <h3>🩻 Medical Imaging</h3>
-            <p>Medical imaging allows healthcare professionals to see structures inside the body.</p>
-            <h4>Types</h4>
-            <ul>
-              <li>X-ray → uses X-rays to create images.</li>
-              <li>CT → uses X-rays + computer processing to create cross-sectional images.</li>
-              <li>MRI → uses a strong magnetic field + radio waves to create detailed images.</li>
-              <li>Ultrasound → uses high-frequency sound waves to create images.</li>
-            </ul>
-            <p><strong>⭐ Memorize:</strong> X-ray → X-rays; CT → X-rays + computer; MRI → magnets + radio waves; Ultrasound → sound waves.</p>
-            <p><strong>🩺 BME Connection:</strong> Engineers help develop and improve imaging equipment and image-processing technologies.</p>
-          </div>
-
-          <div id="microbiology" class="tab-panel">
-            <h3>🧫 Microbiology</h3>
-            <p>Microbiology is the study of microscopic organisms and biological agents.</p>
-            <h4>Examples</h4>
-            <ul>
-              <li>Bacteria → single-celled organisms; some helpful, some harmful.</li>
-              <li>Viruses → infectious agents that reproduce using host cells.</li>
-              <li>Fungi → organisms including yeasts and molds.</li>
-              <li>Pathogen → an infectious agent that can cause disease.</li>
-            </ul>
-            <p><strong>🩺 BME Connection:</strong> Biomedical engineers can develop diagnostic tests, biosensors, disease-detection technologies, and lab technologies.</p>
-            <p><strong>⭐ Remember:</strong> Microbiology = study of microscopic life and biological agents.</p>
-          </div>
-
-          <div id="neuroscience" class="tab-panel">
-            <h3>🧠 Neuroscience</h3>
-            <p>Neuroscience is the study of the nervous system.</p>
-            <h4>Main Parts</h4>
-            <p>Brain → Spinal cord → Nerves.</p>
-            <h4>Neurons</h4>
-            <p>A neuron is a specialized cell that communicates information through electrical and chemical signals.</p>
-            <p>The nervous system helps you sense your environment, process information, control movement, and respond to stimuli.</p>
-            <p><strong>🩺 BME Connection:</strong> Biomedical engineers can develop neural sensors, neuroprosthetics, brain-computer interfaces, and assistive technologies.</p>
-            <p><strong>⭐ Remember:</strong> Neuron = specialized cell that communicates information.</p>
-          </div>
-
-          <div id="coding" class="tab-panel">
-            <h3>💻 Biomedical Technology & Coding</h3>
-            <p>Computers are important tools in modern biomedical engineering.</p>
-            <h4>Coding Can Be Used For:</h4>
-            <ul>
-              <li>📊 Data analysis</li>
-              <li>📈 Graphs</li>
-              <li>🩻 Medical image processing</li>
-              <li>🔬 Scientific simulations</li>
-              <li>📡 Sensors</li>
-              <li>🤖 AI systems</li>
-              <li>🧮 Mathematical modeling</li>
-            </ul>
-            <p>Python is a useful programming language for learning computational skills.</p>
-            <pre><code>
-heart_rates = [72, 75, 78, 80, 76, 74]
-average = sum(heart_rates) / len(heart_rates)
-print("Average heart rate:", average)
-            </code></pre>
-            <p><strong>🩺 BME Connection:</strong> Coding allows engineers to build and analyze technologies that work with biological and medical data.</p>
-            <p><strong>⭐ Remember:</strong> Coding + Biology + Engineering = Biomedical Computing.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="approach section-shell" id="about">
-      <div class="approach-copy reveal">
-        <p class="eyebrow">02 / About BME</p>
-        <h2>More than a field.<br><em>A way of solving.</em></h2>
-        <p>Biomedical Engineering combines biology, medicine, and technology to design solutions that improve human health and quality of life.</p>
-      </div>
-      <div class="approach-art reveal" aria-hidden="true">
-        <div class="art-line line-one"></div>
-        <div class="art-line line-two"></div>
-        <div class="art-dot dot-one"></div>
-        <div class="art-dot dot-two"></div>
-        <div class="art-dot dot-three"></div>
-        <div class="art-core">BME</div>
-        <span class="art-note note-one">observe</span>
-        <span class="art-note note-two">design</span>
-        <span class="art-note note-three">improve</span>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact section-shell" id="contact">
-      <p class="eyebrow">Start a conversation</p>
-      <h2>What will you<br><em>discover next?</em></h2>
-      <button class="button button-primary" id="contact-button" type="button">Connect with BME Tutor <span aria-hidden="true">↗</span></button>
-      <p class="contact-note" id="contact-note" role="status"></p>
-    </section>
-  </main>
-
-  <footer class="site-footer section-shell">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span>NOVA<span class="brand-muted">/BIOBME</span></span>
-    </a>
-    <p>Biomedical Engineering, decoded.</p>
-    <p>© 2026 NOVA BioBME</p>
-  </footer>
-
-  <!-- AI TUTOR CHAT -->
-  <button id="chatBtn" class="chat-button">💬</button>
-  <div id="chatBox" class="chat-box">
-    <div class="chat-header">AI Tutor</div>
-    <div class="chat-body" id="chatBody"></div>
-    <div class="chat-input-area">
-      <input id="chatInput" type="text" placeholder="Ask about BME topics...">
-      <button id="sendBtn">Send</button>
-    </div>
+<section class="platform section-shell" id="platform">
+  <div class="section-intro reveal">
+    <p class="eyebrow">01 / Core Topics</p>
+    <h2>A new lens on<br><em>Biomedical Engineering.</em></h2>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="platform-copy reveal">
+    <p>Explore the 12 core pillars of Biomedical Engineering through interactive topics and a built-in AI tutor.</p>
+  </div>
+
+  <!-- TAB BUTTONS -->
+  <div class="bme-tabs reveal">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="cells">🔬 Cells</button>
+      <button class="tab-btn" data-tab="dna">🧬 DNA & Genetics</button>
+      <button class="tab-btn" data-tab="systems">🫀 Human Body Systems</button>
+      <button class="tab-btn" data-tab="homeostasis">⚖️ Homeostasis</button>
+      <button class="tab-btn" data-tab="biomechanics">🦴 Biomechanics</button>
+      <button class="tab-btn" data-tab="design">⚙️ Engineering Design</button>
+      <button class="tab-btn" data-tab="devices">🦾 Medical Devices</button>
+      <button class="tab-btn" data-tab="materials">🧪 Biomaterials</button>
+      <button class="tab-btn" data-tab="imaging">🩻 Medical Imaging</button>
+      <button class="tab-btn" data-tab="microbiology">🧫 Microbiology</button>
+      <button class="tab-btn" data-tab="neuroscience">🧠 Neuroscience</button>
+      <button class="tab-btn" data-tab="coding">💻 Biomedical Technology & Coding</button>
+    </div>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content">
+
+      <div id="cells" class="tab-panel active">
+        <h3>🔬 Cells</h3>
+        <p>A cell is the basic unit of life.</p>
+      </div>
+
+      <div id="dna" class="tab-panel">
+        <h3>🧬 DNA & Genetics</h3>
+        <p>DNA contains genetic instructions.</p>
+      </div>
+
+      <div id="systems" class="tab-panel">
+        <h3>🫀 Human Body Systems</h3>
+        <p>The human body has many systems that work together.</p>
+      </div>
+
+      <div id="homeostasis" class="tab-panel">
+        <h3>⚖️ Homeostasis</h3>
+        <p>Homeostasis keeps internal conditions stable.</p>
+      </div>
+
+      <div id="biomechanics" class="tab-panel">
+        <h3>🦴 Biomechanics</h3>
+        <p>Biomechanics applies physics to living organisms.</p>
+      </div>
+
+      <div id="design" class="tab-panel">
+        <h3>⚙️ Engineering Design</h3>
+        <p>Engineering design is a cycle.</p>
+      </div>
+
+      <div id="devices" class="tab-panel">
+        <h3>🦾 Medical Devices</h3>
+        <p>Medical devices help people live healthier lives.</p>
+      </div>
+
+      <div id="materials" class="tab-panel">
+        <h3>🧪 Biomaterials</h3>
+        <p>Biomaterials interact with the body.</p>
+      </div>
+
+      <div id="imaging" class="tab-panel">
+        <h3>🩻 Medical Imaging</h3>
+        <p>Medical imaging lets doctors see inside the body.</p>
+      </div>
+
+      <div id="microbiology" class="tab-panel">
+        <h3>🧫 Microbiology</h3>
+        <p>Microbiology studies microscopic organisms.</p>
+      </div>
+
+      <div id="neuroscience" class="tab-panel">
+        <h3>🧠 Neuroscience</h3>
+        <p>Neuroscience studies the nervous system.</p>
+      </div>
+
+      <div id="coding" class="tab-panel">
+        <h3>💻 Biomedical Technology & Coding</h3>
+        <p>Coding helps analyze biomedical data.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
