@@ -8,66 +8,67 @@ buttons.forEach(btn => {
     panels.forEach(p => p.classList.remove("active"));
 
     btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
+    const panel = document.getElementById(btn.dataset.tab);
+    if (panel) panel.classList.add("active");
   });
 });
 
-// AI Knowledge
-const aiKnowledge = {
-  cells: "Cells are the basic unit of life.",
-  dna: "DNA carries genetic instructions.",
-  systems: "Body systems work together.",
-  homeostasis: "Homeostasis keeps internal conditions stable.",
-  biomechanics: "Biomechanics applies physics to living organisms.",
-  design: "Engineering design: Identify → Research → Brainstorm → Design → Build → Test → Improve.",
-  devices: "Medical devices include prosthetics, pacemakers, and monitors.",
-  materials: "Biomaterials include metals, polymers, ceramics, and hydrogels.",
-  imaging: "Medical imaging includes X-ray, CT, MRI, and ultrasound.",
-  microbiology: "Microbiology studies bacteria, viruses, fungi, and pathogens.",
-  neuroscience: "Neuroscience studies the brain, spinal cord, and nerves.",
-  coding: "Coding helps analyze biomedical data."
-};
+// Contact button (simple status)
+const contactButton = document.getElementById("contact-button");
+const contactNote = document.getElementById("contact-note");
 
-// AI Answer
-function aiAnswer(q) {
-  q = q.toLowerCase();
-
-  if (q.includes("cell")) return aiKnowledge.cells;
-  if (q.includes("dna")) return aiKnowledge.dna;
-  if (q.includes("system")) return aiKnowledge.systems;
-  if (q.includes("homeostasis")) return aiKnowledge.homeostasis;
-  if (q.includes("biomech")) return aiKnowledge.biomechanics;
-  if (q.includes("engineer")) return aiKnowledge.design;
-  if (q.includes("device")) return aiKnowledge.devices;
-  if (q.includes("material")) return aiKnowledge.materials;
-  if (q.includes("image") || q.includes("x-ray") || q.includes("mri")) return aiKnowledge.imaging;
-  if (q.includes("micro")) return aiKnowledge.microbiology;
-  if (q.includes("neuro")) return aiKnowledge.neuroscience;
-  if (q.includes("code")) return aiKnowledge.coding;
-
-  return "Try asking about cells, DNA, body systems, biomechanics, biomaterials, imaging, microbiology, neuroscience, or coding.";
+if (contactButton && contactNote) {
+  contactButton.addEventListener("click", () => {
+    contactNote.textContent = "Imagine this as your starting point: explore each topic, ask questions, and build your own BME journey.";
+  });
 }
 
-// Chat button
+// AI Tutor
 const chatBtn = document.getElementById("chatBtn");
 const chatBox = document.getElementById("chatBox");
-
-chatBtn.addEventListener("click", () => {
-  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-});
-
-// Chat send
 const chatBody = document.getElementById("chatBody");
 const chatInput = document.getElementById("chatInput");
 const sendBtn = document.getElementById("sendBtn");
 
-sendBtn.addEventListener("click", () => {
-  const text = chatInput.value.trim();
-  if (!text) return;
+if (chatBtn && chatBox) {
+  chatBtn.addEventListener("click", () => {
+    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+    chatBox.style.display === "flex" && chatInput && chatInput.focus();
+  });
+}
 
-  chatBody.innerHTML += `<p>You: ${text}</p>`;
-  chatBody.innerHTML += `<p>AI: ${aiAnswer(text)}</p>`;
+function aiAnswer(text) {
+  const q = text.toLowerCase();
 
-  chatInput.value = "";
-  chatBody.scrollTop = chatBody.scrollHeight;
-});
+  if (q.includes("cell")) return "Cells are the basic unit of life. Try opening the Cells tab for more details.";
+  if (q.includes("dna")) return "DNA carries genetic information. Check the DNA & Genetics tab for key terms.";
+  if (q.includes("system")) return "Body systems work together to keep you alive. The Human Body Systems tab breaks them down.";
+  if (q.includes("homeostasis")) return "Homeostasis keeps internal conditions stable. Think temperature, water, and glucose.";
+  if (q.includes("biomech")) return "Biomechanics applies physics to movement, bones, and muscles.";
+  if (q.includes("design")) return "Engineering design is a cycle: identify, research, brainstorm, design, build, test, improve.";
+  if (q.includes("device")) return "Medical devices include prosthetics, pacemakers, and monitors.";
+  if (q.includes("material")) return "Biomaterials are metals, polymers, ceramics, and hydrogels used in the body.";
+  if (q.includes("image")) return "Medical imaging includes X-ray, CT, MRI, and ultrasound.";
+  if (q.includes("micro")) return "Microbiology studies bacteria, viruses, fungi, and pathogens.";
+  if (q.includes("neuro")) return "Neuroscience focuses on the brain, spinal cord, nerves, and neurons.";
+  if (q.includes("code") || q.includes("python")) return "Coding (like Python) helps analyze biomedical data, model systems, and process images.";
+
+  return "Try asking about cells, DNA, body systems, homeostasis, biomechanics, biomaterials, imaging, microbiology, neuroscience, or coding.";
+}
+
+if (sendBtn && chatInput && chatBody) {
+  sendBtn.addEventListener("click", () => {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    chatBody.innerHTML += `<p><strong>You:</strong> ${text}</p>`;
+    chatBody.innerHTML += `<p><strong>AI:</strong> ${aiAnswer(text)}</p>`;
+
+    chatInput.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+  });
+
+  chatInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") sendBtn.click();
+  });
+}
