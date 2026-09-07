@@ -1,291 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="NovaBioAI — Biomedical engineering learning site: courses, projects, ethics, and resources." />
-  <title>NovaBioAI — Biomedical Engineering</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Theme stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <link rel="icon" href="/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOVA BioAI turns biological complexity into clear, actionable discovery signals.">
+  <title>NOVA BioAI | Biology, decoded</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="#home" aria-label="NovaBioAI Home" id="brandLink">
-          <div class="logo-mark" aria-hidden="true">🧬</div>
-          <div class="brand-text">
-            <div class="brand-title">NovaBioAI</div>
-            <div class="brand-sub">Biomedical Engineering Academy</div>
-          </div>
-        </a>
-      </div>
-
-      <nav class="top-tabs" role="navigation" aria-label="Primary">
-        <div role="tablist" aria-label="Main" class="tablist" id="mainTabs">
-          <button role="tab" aria-selected="true" aria-controls="panel-home" id="tab-home" class="tab">Home</button>
-          <button role="tab" aria-selected="false" aria-controls="panel-course" id="tab-course" class="tab">Course</button>
-          <button role="tab" aria-selected="false" aria-controls="panel-projects" id="tab-projects" class="tab">Projects</button>
-          <button role="tab" aria-selected="false" aria-controls="panel-ethics" id="tab-ethics" class="tab">Ethics</button>
-          <button role="tab" aria-selected="false" aria-controls="panel-contact" id="tab-contact" class="tab">Contact</button>
-        </div>
-      </nav>
-
-      <button id="navToggle" class="nav-toggle" aria-controls="mainTabs" aria-expanded="false" aria-label="Toggle navigation">
-        ☰
-      </button>
-    </div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="NOVA BioAI home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>NOVA<span class="brand-muted">/BIOAI</span></span></a>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation"><a class="active" href="#Cells">Cells</a><a href="#Genetics & DNA">Genetics & DNA</a><a href="#Human Body Systems">Human Body Systems</a><a href="#Homeostasis">Homeostasis</a><a href="#Biomechanics">Biomechanics</a><a href="#Engineering Design">Engineering Design</a><a href="#Prosthetics & Medical Devices">Prosthetics & Medical Devices</a><a href="#Biomaterials">Biomaterials</a><a href="#Medical Imaging">Medical Imaging</a><a href="#Biomedical Technology & Coding">Biomedical Technology & Coding</a><a href="#Microbiology">Microbiology</a><a href="#euroscience Basics">euroscience Basics</a><a                   
+    <a class="header-cta" href="#contact">Talk to our team <span aria-hidden="true">↗</span></a>                
+    <a class="header-cta" href="#contact">Talk to our team <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
   </header>
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal"><p class="eyebrow"><span class="pulse"></span> 7th Grade Biology </p><h1>What Is Biomedical<br><em>Engineering?</em></h1><p class="hero-lede">Biomedical Engineering (BME) is a field that combines biology, medicine, engineering, and technology to solve problems related to the human body and healthcare.
 
-  <main id="main" class="site-main container" role="main">
-    <!-- Tab panels -->
-    <section id="panel-home" role="tabpanel" aria-labelledby="tab-home" class="panel" data-visible>
-      <div class="hero">
-        <h1>Biology, decoded.</h1>
-        <p class="lead">Learn → Explore → Design → Test — interactive biomedical engineering lessons and projects.</p>
-        <p>NovaBioAI transforms biological complexity into discoveries that move medicine forward.</p>
-
-        <div class="home-grid">
-          <article class="card">
-            <h3>Courses</h3>
-            <p>Structured units covering foundations, biology, imaging, biomaterials, AI in healthcare and more.</p>
-          </article>
-          <article class="card">
-            <h3>Projects</h3>
-            <p>Design challenges, prototyping ideas and student showcases — get hands-on experience.</p>
-          </article>
-          <article class="card">
-            <h3>Tutor AI</h3>
-            <p>Ask the built-in NovaBioAI Tutor to teach units or explain concepts from the site.</p>
-          </article>
-        </div>
-      </div>
+Biomedical engineers use science and engineering to design, create, test, and improve medical technologies that can help people.</p><div class="hero-actions"><a class="button button-primary" href="#platform">Explore the platform <span aria-hidden="true">↗</span></a><a class="text-link" href="#approach">See the topics in biomedical engineering <span aria-hidden="true">→</span></a></div></div>
+      <div class="hero-visual reveal" aria-label="Abstract molecular network visualization" role="img"><div class="visual-label label-top">LIVE MODEL <span></span></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="molecule molecule-main"><span></span></div><div class="molecule molecule-small small-one"><span></span></div><div class="molecule molecule-small small-two"><span></span></div><div class="connector connector-a"></div><div class="connector connector-b"></div><div class="visual-label label-bottom">PROTEIN FOLD / 04:16:32</div><div class="visual-caption">Mapping what<br>cannot be seen.</div></div>
     </section>
+    <section class="signal-bar section-shell" aria-label="NOVA BioAI metrics"><p>BME Topics info</p><div class="signal-metric"><strong>12<sup>60</sup></strong><span>biological<br>topics and sub topics</span></div><div class="signal-metric"><strong>12 topics will be covered<span></strong><span>target for <br>7th grade</span></div><div class="signal-metric"></div></section>
+    <section class="platform section-shell" id="platform"><div class="section-intro reveal"><p class="eyebrow">01 / Cells</p><h2>📖 What Is a <br><em>Cell?</em></h2></div><div class="platform-copy reveal"><p>A cell is the smallest unit of life that can carry out the basic processes needed for an organism to live.
 
-    <section id="panel-course" role="tabpanel" aria-labelledby="tab-course" class="panel" hidden>
-      <div class="course-shell">
-        <aside class="course-nav" aria-label="Units">
-          <div class="units-title">Units</div>
-          <ul class="units-list" role="tablist" aria-orientation="vertical" id="unitTabs">
-            <li><button role="tab" aria-selected="true" aria-controls="unit-1-panel" id="unit-1-tab" class="unit-tab">Unit 1 • BME Foundations</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-2-panel" id="unit-2-tab" class="unit-tab">Unit 2 • Biology</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-3-panel" id="unit-3-tab" class="unit-tab">Unit 3 • Human Body</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-4-panel" id="unit-4-tab" class="unit-tab">Unit 4 • Engineering the Body</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-5-panel" id="unit-5-tab" class="unit-tab">Unit 5 • Imaging & Sensors</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-6-panel" id="unit-6-tab" class="unit-tab">Unit 6 • Materials & Medicine</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-7-panel" id="unit-7-tab" class="unit-tab">Unit 7 • Robots & AI</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-8-panel" id="unit-8-tab" class="unit-tab">Unit 8 • Design Process</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-9-panel" id="unit-9-tab" class="unit-tab">Unit 9 • Projects</button></li>
-            <li><button role="tab" aria-selected="false" aria-controls="unit-10-panel" id="unit-10-tab" class="unit-tab">Unit 10 • Ethics</button></li>
-          </ul>
-        </aside>
+All living organisms are made of one or more cells.🧠 Two Main Types of Cells
 
-        <div class="unit-panels">
-          <article id="unit-1-panel" role="tabpanel" aria-labelledby="unit-1-tab" class="unit-panel" data-visible>
-            <h2>Unit 1 — BME Foundations</h2>
-            <p>Biomedical engineering uses engineering principles to solve problems involving biology and medicine.</p>
-            <ul>
-              <li>Design medical devices</li>
-              <li>Develop prosthetics</li>
-              <li>Improve medical imaging</li>
-            </ul>
-          </article>
+Prokaryotic cells
 
-          <article id="unit-2-panel" role="tabpanel" aria-labelledby="unit-2-tab" class="unit-panel" hidden>
-            <h2>Unit 2 — Biology</h2>
-            <h3>Cells</h3>
-            <p>The cell is the basic unit of life. Important structures: nucleus (DNA), membrane, mitochondria, cytoplasm, ribosomes.</p>
-            <h3>DNA & Genetics</h3>
-            <p>DNA contains genetic instructions. Gene = section of DNA; Chromosome = structure containing DNA.</p>
-          </article>
+Do not have a nucleus.
+Example: bacteria.
 
-          <article id="unit-3-panel" role="tabpanel" aria-labelledby="unit-3-tab" class="unit-panel" hidden>
-            <h2>Unit 3 — The Human Body</h2>
-            <p>Organization: Cells → Tissues → Organs → Systems (circulatory, respiratory, nervous, skeletal, muscular, immune, digestive).</p>
-            <h3>Cardiovascular system</h3>
-            <p>Heart, blood, vessels — engineers make monitoring systems and sensors.</p>
-          </article>
+Eukaryotic cells
 
-          <article id="unit-4-panel" role="tabpanel" aria-labelledby="unit-4-tab" class="unit-panel" hidden>
-            <h2>Unit 4 — Engineering the Body</h2>
-            <p>Prosthetics, implants and rehabilitation devices combine materials, mechanics, sensors and software.</p>
-          </article>
+Have a nucleus.
+Examples: animal, plant, fungi, and protist cells. 🌱 Plant vs. 🐾 Animal Cells
+Plant cells
 
-          <article id="unit-5-panel" role="tabpanel" aria-labelledby="unit-5-tab" class="unit-panel" hidden>
-            <h2>Unit 5 — Seeing Inside the Body</h2>
-            <p>Medical imaging: X-ray, CT, MRI, ultrasound — image processing is a core BME area.</p>
-            <h3>Sensors & Wearables</h3>
-            <p>Wearables measure signals: heart-rate, oxygen, glucose and more.</p>
-          </article>
+Have:
 
-          <article id="unit-6-panel" role="tabpanel" aria-labelledby="unit-6-tab" class="unit-panel" hidden>
-            <h2>Unit 6 — Materials & Medicine</h2>
-            <p>Biomaterials for implants, controlled drug delivery, nanoparticles and tissue engineering are key topics.</p>
-          </article>
+Cell wall
+Chloroplasts
+Large central vacuole
+Nucleus
+Cell membrane
+Cytoplasm
+Mitochondria
+Animal cells
 
-          <article id="unit-7-panel" role="tabpanel" aria-labelledby="unit-7-tab" class="unit-panel" hidden>
-            <h2>Unit 7 — Robots & Technology</h2>
-            <p>Surgical robots, automation, sensors, and AI in healthcare.</p>
-          </article>
+Have:
 
-          <article id="unit-8-panel" role="tabpanel" aria-labelledby="unit-8-tab" class="unit-panel" hidden>
-            <h2>Unit 8 — Engineering Design</h2>
-            <ol>
-              <li>Identify the problem</li>
-              <li>Research</li>
-              <li>Design & Prototype</li>
-              <li>Test & Improve</li>
-            </ol>
-          </article>
+Nucleus
+Cell membrane
+Cytoplasm
+Mitochondria
+Ribosomes
+Smaller vacuoles
 
-          <article id="unit-9-panel" role="tabpanel" aria-labelledby="unit-9-tab" class="unit-panel" hidden>
-            <h2>Unit 9 — BME Projects</h2>
-            <p>Project idea: design a medical device — describe problem, research, materials, prototype and testing plan.</p>
-          </article>
+⭐ Main difference: Plant cells have cell walls and chloroplasts; animal cells do not.
 
-          <article id="unit-10-panel" role="tabpanel" aria-labelledby="unit-10-tab" class="unit-panel" hidden>
-            <h2>Unit 10 — BME Ethics</h2>
-            <p>Privacy, safety, reliability, fairness and accessibility are essential considerations for medical tech.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+⚡ How Cells Get Energy
 
-    <section id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" class="panel" hidden>
-      <h2>Projects</h2>
-      <p>Showcase student projects and prototypes. Add images, videos, and short descriptions here.</p>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h4>Heart Monitor Prototype</h4>
-          <p>Wearable sensor + algorithm demo.</p>
-        </div>
-        <div class="project-card">
-          <h4>3D-printed Prosthetic Cover</h4>
-          <p>Lightweight materials and sensor integration.</p>
-        </div>
-      </div>
-    </section>
+Cells need energy to perform their activities.
 
-    <section id="panel-ethics" role="tabpanel" aria-labelledby="tab-ethics" class="panel" hidden>
-      <h2>Ethics & Safety</h2>
-      <p>Responsible design, testing, consent and data privacy are essential for biomedical technologies.</p>
-    </section>
+Food → cellular respiration → usable energy (ATP)
 
-    <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" class="panel" hidden>
-      <h2>Contact</h2>
-      <p>Get in touch — add an email or contact form endpoint here.</p>
-      <form class="contact-form" action="#" method="post" onsubmit="alert('This is a demo form — integrate a backend to enable messaging.'); return false;">
-        <label>
-          Name
-          <input name="name" type="text" required />
-        </label>
-        <label>
-          Email
-          <input name="email" type="email" required />
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <div class="form-actions">
-          <button type="submit" class="primary">Send message</button>
-        </div>
-      </form>
-    </section>
+The mitochondria are important sites of cellular respiration in eukaryotic cells.
+
+🧬 Cells & DNA
+
+The nucleus of a eukaryotic cell contains most of the cell's DNA.
+
+DNA → genetic instructions → proteins → cell functions
+
+🩺 Biomedical Engineering Connection
+
+Biomedical engineers study cells because cells are involved in:
+
+🧬 Genetics
+🧫 Disease research
+🧪 Tissue engineering
+💊 Drug-delivery technologies
+🦴 Regenerative medicine
+🔬 Medical research
+
+Understanding cells helps biomedical engineers understand how the human body works and how medical technologies can interact with biological systems.</p><a class="text-link" href="#applications">Discover our capabilities <span aria-hidden="true">→</span></a></div><div class="capability-grid"><article class="capability capability-feature reveal"><span class="card-number">01</span><div class="card-icon network-icon" aria-hidden="true"><span></span><span></span><span></span></div><h3>See across scales</h3><p>Connect signals from molecule to organism in one intelligent system.</p><a href="#approach" aria-label="Explore see across scales">↗</a></article><article class="capability reveal"><span class="card-number">02</span><div class="card-icon rings-icon" aria-hidden="true"></div><h3>Learn from biology</h3><p>Models built for the nuances, constraints, and wonder of living systems.</p><a href="#approach" aria-label="Explore learn from biology">↗</a></article><article class="capability reveal"><span class="card-number">03</span><div class="card-icon spark-icon" aria-hidden="true">✦</div><h3>Act with confidence</h3><p>Turn complex evidence into decisions your team can trust.</p><a href="#approach" aria-label="Explore act with confidence">↗</a></article></div></section>
+    <section class="applications section-shell" id="applications"><div class="section-intro reveal"><p class="eyebrow">02 /DNA & Genetics </p><h2>📖 What Is br><em> DNA?<.</em></h2></div><div class="application-list reveal"><a href="#contact" class="application-row"><span class="app-index">01</span><span class="app-title">Drug discovery</span><span class="app-detail">Find the signal in the noise.</span><span class="app-arrow">↗</span></a><a href="#contact" class="application-row"><span class="app-index">02</span><span class="app-title">Precision medicine</span><span class="app-detail">Make biology personal.</span><span class="app-arrow">↗</span></a><a href="#contact" class="application-row"><span class="app-index">03</span><span class="app-title">Synthetic biology</span><span class="app-detail">Design with nature.</span><span class="app-arrow">↗</span></a></div></section>
+    <section class="approach section-shell" id="approach"><div class="approach-copy reveal"><p class="eyebrow">03 / Our approach</p><h2>More than a model.<br><em>A way of seeing.</em></h2><p>We pair frontier AI with deep biological expertise to build systems that are powerful, transparent, and made for the real world.</p><a class="button button-light" href="#contact">Meet NOVA <span aria-hidden="true">↗</span></a></div><div class="approach-art reveal" aria-hidden="true"><div class="art-line line-one"></div><div class="art-line line-two"></div><div class="art-dot dot-one"></div><div class="art-dot dot-two"></div><div class="art-dot dot-three"></div><div class="art-core">N</div><span class="art-note note-one">observe</span><span class="art-note note-two">interpret</span><span class="art-note note-three">discover</span></div></section>
+    <section class="contact section-shell" id="contact"><p class="eyebrow">Start a conversation</p><h2>What will you<br><em>discover next?</em></h2><button class="button button-primary" id="contact-button" type="button">Connect with NOVA <span aria-hidden="true">↗</span></button><p class="contact-note" id="contact-note" role="status"></p></section>
   </main>
-
-  <!-- Floating AI tutor toggle and panel -->
-  <button id="aiToggle" class="ai-toggle" aria-haspopup="true" aria-expanded="false" title="Open NovaBioAI Tutor">AI</button>
-
-  <aside id="aiPanel" class="ai-panel" role="dialog" aria-label="NovaBioAI Tutor" aria-hidden="true" hidden>
-    <div class="ai-header">
-      <div>
-        <strong>NovaBioAI Tutor</strong>
-        <div class="small">Try: "Teach me unit 2", "Explain MRI", or ask any question — responses may cite the site or use the LLM backend.</div>
-      </div>
-      <div class="ai-controls-top">
-        <button id="aiSpeakToggle" aria-pressed="false" title="Toggle speech">🔊</button>
-        <button id="aiClose" aria-label="Close tutor">✕</button>
-      </div>
-    </div>
-
-    <div id="aiLog" class="ai-log" aria-live="polite"></div>
-
-    <div class="ai-suggestions" aria-hidden="false">
-      <button class="ai-chip" data-q="Teach me unit 1">Teach me unit 1</button>
-      <button class="ai-chip" data-q="Explain cells">Explain cells</button>
-      <button class="ai-chip" data-q="What is prosthetics">What is prosthetics</button>
-      <button class="ai-chip" data-q="How do sensors work">How do sensors work</button>
-    </div>
-
-    <div class="ai-controls">
-      <input id="aiInput" class="ai-input" placeholder="Ask the tutor — e.g., 'Teach me unit 3' or 'Explain MRI'">
-      <button id="aiSend">Send</button>
-    </div>
-  </aside>
-
-  <footer class="site-footer container">
-    <div class="small">© NovaBioAI — Built for learning. Use responsibly — medical technologies require careful testing. The tutor provides educational information and is not a substitute for professional medical advice.</div>
-  </footer>
-
-  <script src="ai-tutor.js" defer></script>
-  <script>
-    // Main tab navigation (accessible)
-    (function () {
-      function setActiveTab(tabEl, tablist) {
-        Array.from(tablist.querySelectorAll('[role="tab"]')).forEach(t => {
-          t.setAttribute('aria-selected', 'false');
-          const panel = document.getElementById(t.getAttribute('aria-controls'));
-          if (panel) panel.hidden = true;
-        });
-        tabEl.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById(tabEl.getAttribute('aria-controls'));
-        if (panel) {
-          panel.hidden = false;
-          panel.setAttribute('data-visible', '');
-          panel.scrollTop = 0;
-        }
-      }
-
-      // top-level tabs
-      const mainTabs = document.getElementById('mainTabs');
-      mainTabs.addEventListener('click', (e) => {
-        const t = e.target.closest('[role="tab"]');
-        if (!t) return;
-        setActiveTab(t, mainTabs);
-      });
-
-      // unit tabs (vertical)
-      const unitTabs = document.getElementById('unitTabs');
-      unitTabs.addEventListener('click', (e) => {
-        const t = e.target.closest('[role="tab"]');
-        if (!t) return;
-        Array.from(unitTabs.querySelectorAll('[role="tab"]')).forEach(btn => {
-          btn.setAttribute('aria-selected', 'false');
-          const p = document.getElementById(btn.getAttribute('aria-controls'));
-          if (p) p.hidden = true;
-        });
-        t.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById(t.getAttribute('aria-controls'));
-        if (panel) panel.hidden = false;
-      });
-
-      // mobile nav toggle: show/hide top tabs
-      const navToggle = document.getElementById('navToggle');
-      navToggle.addEventListener('click', () => {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-        document.querySelector('.top-tabs').classList.toggle('open', !expanded);
-      });
-    })();
-  </script>
+  <footer class="site-footer section-shell"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>NOVA<span class="brand-muted">/BIOAI</span></span></a><p>Biology, decoded.</p><p>© 2026 NOVA BioAI</p></footer>
+  <script src="script.js"></script>
 </body>
 </html>
