@@ -1,32 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // TABS
+  /* -----------------------------
+     TABS FUNCTIONALITY
+  ----------------------------- */
+
   const buttons = document.querySelectorAll(".tab-btn");
   const panels = document.querySelectorAll(".tab-panel");
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
+
+      // Remove active from all buttons
       buttons.forEach(b => b.classList.remove("active"));
+
+      // Hide all panels
       panels.forEach(p => p.classList.remove("active"));
 
+      // Activate clicked button
       btn.classList.add("active");
+
+      // Show matching panel
       const panel = document.getElementById(btn.dataset.tab);
-      if (panel) panel.classList.add("active");
+      if (panel) {
+        panel.classList.add("active");
+      }
     });
   });
 
-  // CHAT BUTTON
+
+  /* -----------------------------
+     CHAT BUTTON TOGGLE
+  ----------------------------- */
+
   const chatBtn = document.getElementById("chatBtn");
   const chatBox = document.getElementById("chatBox");
-  const chatBody = document.getElementById("chatBody");
-  const chatInput = document.getElementById("chatInput");
-  const sendBtn = document.getElementById("sendBtn");
 
   if (chatBtn && chatBox) {
     chatBtn.addEventListener("click", () => {
       chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
     });
   }
+
+
+  /* -----------------------------
+     AI TUTOR RESPONSE SYSTEM
+  ----------------------------- */
+
+  const chatBody = document.getElementById("chatBody");
+  const chatInput = document.getElementById("chatInput");
+  const sendBtn = document.getElementById("sendBtn");
 
   function aiAnswer(text) {
     const q = text.toLowerCase();
@@ -42,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (q.includes("image")) return "Medical imaging includes X-ray, CT, MRI, and ultrasound.";
     if (q.includes("micro")) return "Microbiology studies bacteria, viruses, fungi, and pathogens.";
     if (q.includes("neuro")) return "Neuroscience studies the brain, spinal cord, and nerves.";
-    if (q.includes("code")) return "Coding helps analyze biomedical data.";
+    if (q.includes("code") || q.includes("python")) return "Coding helps analyze biomedical data.";
 
     return "Try asking about cells, DNA, body systems, biomechanics, biomaterials, imaging, microbiology, neuroscience, or coding.";
   }
