@@ -1,25 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* -----------------------------
-     TABS FUNCTIONALITY
-  ----------------------------- */
-
+  // TABS
   const buttons = document.querySelectorAll(".tab-btn");
   const panels = document.querySelectorAll(".tab-panel");
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-
-      // Remove active from all buttons
+      // remove active from all
       buttons.forEach(b => b.classList.remove("active"));
-
-      // Hide all panels
       panels.forEach(p => p.classList.remove("active"));
 
-      // Activate clicked button
+      // activate clicked
       btn.classList.add("active");
-
-      // Show matching panel
       const panel = document.getElementById(btn.dataset.tab);
       if (panel) {
         panel.classList.add("active");
@@ -27,28 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
-  /* -----------------------------
-     CHAT BUTTON TOGGLE
-  ----------------------------- */
-
+  // CHAT
   const chatBtn = document.getElementById("chatBtn");
   const chatBox = document.getElementById("chatBox");
+  const chatBody = document.getElementById("chatBody");
+  const chatInput = document.getElementById("chatInput");
+  const sendBtn = document.getElementById("sendBtn");
 
   if (chatBtn && chatBox) {
     chatBtn.addEventListener("click", () => {
       chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
     });
   }
-
-
-  /* -----------------------------
-     AI TUTOR RESPONSE SYSTEM
-  ----------------------------- */
-
-  const chatBody = document.getElementById("chatBody");
-  const chatInput = document.getElementById("chatInput");
-  const sendBtn = document.getElementById("sendBtn");
 
   function aiAnswer(text) {
     const q = text.toLowerCase();
@@ -85,5 +66,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Enter") sendBtn.click();
     });
   }
-
 });
